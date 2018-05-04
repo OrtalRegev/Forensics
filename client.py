@@ -6,6 +6,7 @@ SERVER_PORT = 6969
 SERVER_IP = '10.0.0.11'
 OUTPUT_PATH = 'tcp:6969'
 FORMAT_TYPE = 'raw'
+LIME_FILE_PATH = 'LiME/src/lime-4.15.0-kali2-amd64.ko'
 sock = None # The socket
 
 
@@ -23,8 +24,7 @@ def start_comunication():
 # Dumping file using LiME
 def terminal_command():
     command = 'insmod'
-    lime_file_path = 'LiME/src/lime-4.15.0-kali2-amd64.ko'
-    subprocess.call([command, lime_file_path, "path={0} format={1}".format(OUTPUT_PATH, FORMAT_TYPE)])
+    subprocess.call([command, LIME_FILE_PATH, "path={0} format={1}".format(OUTPUT_PATH, FORMAT_TYPE)])
 
 
 def send_to_server(message):
