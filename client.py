@@ -21,6 +21,7 @@ def start_comunication():
     sock.close()
 
 
+# Dumping file using LiME
 def terminal_command():
     command = 'insmod'
     lime_file_path = 'LiME/src/lime-4.15.0-kali2-amd64.ko'
