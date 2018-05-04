@@ -1,8 +1,11 @@
 import subprocess
 import socket
+
+
 SERVER_PORT = 6969
 SERVER_IP = '10.0.0.11'
-OUTPUT_FILE = 'path=$HOME/ram.raw'
+OUTPUT_PATH = 'tcp:6969'
+FORMAT_TYPE = 'raw'
 sock = None # The socket
 
 
@@ -21,8 +24,7 @@ def start_comunication():
 def terminal_command():
     command = 'insmod'
     lime_file_path = 'LiME/src/lime-4.15.0-kali2-amd64.ko'
-    format_type = 'raw'
-    subprocess.run([command,lime_file_path,"{0} format={1}".format(OUTPUT_FILE, format_type)])
+    subprocess.call([command, lime_file_path, "path={0} format={1}".format(OUTPUT_PATH, FORMAT_TYPE)])
 
 
 def send_to_server(message):
@@ -41,9 +43,7 @@ def receive_from_server(size):
 
 
 if __name__ == '__main__':
-    start_comunication()
-    send_to_server("<script>alert('alert')</script>")
-    close_comunication()
+    terminal_command()
 
 
 
