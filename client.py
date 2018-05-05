@@ -1,6 +1,6 @@
 import subprocess
 import socket
-
+import os
 
 SERVER_PORT = 6969
 SERVER_IP = '10.0.0.11'
@@ -10,7 +10,15 @@ LIME_FILE_PATH = 'LiME/src/lime-4.15.0-kali2-amd64.ko'
 sock = None # The socket
 
 
-def start_comunication():
+def find_lime_file():
+    global LIME_FILE_PATH
+    for root, dirs, files in os.walk("LiME/src/"):
+        for file in files:
+            if file.endswith(".ko"):
+                LIME_FILE_PATH = os.path.join(root, file)
+
+
+def start_communication():
     global sock
     # Create a TCP/IP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -32,7 +40,7 @@ def send_to_server(message):
     sock.send(message)
 
 
-def close_comunication():
+def close_communication():
     sock.close()
 
 
@@ -43,6 +51,7 @@ def receive_from_server(size):
 
 
 if __name__ == '__main__':
+    find_lime_file()
     terminal_command()
 
 
