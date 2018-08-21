@@ -7,7 +7,7 @@ SERVER_IP = '10.0.0.11'
 OUTPUT_PATH = 'tcp:6969'
 FORMAT_TYPE = 'raw'
 LIME_FILE_PATH = 'LiME/src/lime-4.15.0-kali2-amd64.ko'
-sock = None # The socket
+sock = None  # The socket
 
 
 def find_lime_file():
